@@ -12,7 +12,11 @@ import {
   Phone,
   Instagram,
   Facebook,
-  ArrowRight
+  ArrowRight,
+  MessageCircle,
+  ClipboardList,
+  ChefHat,
+  Truck
 } from 'lucide-react';
 
 const App = () => {
@@ -26,10 +30,10 @@ const App = () => {
     }
   };
 
-  const whatsappLink = "https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20pesan%20kateringnya!";
+  const whatsappLink = "https://wa.me/6285694318667?text=Halo,%20saya%20ingin%20pesan%20kateringnya!";
 
   return (
-    <div className="min-h-screen bg-amber-50 text-stone-800 font-sans selection:bg-orange-200">
+    <div className="min-h-screen bg-amber-50 text-stone-800 font-sans selection:bg-orange-200 relative">
 
       {/* Navbar */}
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
@@ -201,8 +205,44 @@ const App = () => {
         </div>
       </section>
 
+      {/* Cara Pemesanan Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-stone-800">Cara Pesan yang Super Mudah</h2>
+            <p className="text-stone-600">Hanya 3 langkah mudah untuk menikmati hidangan lezat kami.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connector Line (Desktop) */}
+            <div className="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-orange-200 -z-10"></div>
+
+            <div className="text-center bg-white p-6 rounded-2xl shadow-sm border border-stone-100 relative">
+              <div className="w-16 h-16 mx-auto bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm relative z-10">
+                <ClipboardList size={28} />
+              </div>
+              <h4 className="text-xl font-bold mb-2 text-stone-800">1. Pilih Menu & Paket</h4>
+              <p className="text-stone-600 text-sm">Hubungi via WA, pilih paket harian/mingguan dan sampaikan preferensi menu Anda.</p>
+            </div>
+            <div className="text-center bg-white p-6 rounded-2xl shadow-sm border border-stone-100 relative">
+              <div className="w-16 h-16 mx-auto bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm relative z-10">
+                <ChefHat size={28} />
+              </div>
+              <h4 className="text-xl font-bold mb-2 text-stone-800">2. Kami Masak Fresh</h4>
+              <p className="text-stone-600 text-sm">Pesanan disiapkan pagi hari dengan bahan baku segar tanpa bahan pengawet.</p>
+            </div>
+            <div className="text-center bg-white p-6 rounded-2xl shadow-sm border border-stone-100 relative">
+              <div className="w-16 h-16 mx-auto bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm relative z-10">
+                <Truck size={28} />
+              </div>
+              <h4 className="text-xl font-bold mb-2 text-stone-800">3. Diantar ke Lokasi</h4>
+              <p className="text-stone-600 text-sm">Kurir kami akan memastikan makanan tiba hangat tepat waktu sebelum jam makan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Menu Preview Section */}
-      <section id="menu" className="py-20 bg-white">
+      <section id="menu" className="py-20 bg-stone-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-800">Menu Andalan Kami</h2>
@@ -211,7 +251,7 @@ const App = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Menu 1 */}
-            <div className="bg-stone-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
               <div className="h-60 overflow-hidden relative">
                 <img
                   src="https://images.unsplash.com/photo-1626804475297-4160baeae0c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
@@ -235,7 +275,7 @@ const App = () => {
             </div>
 
             {/* Menu 2 */}
-            <div className="bg-stone-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
               <div className="h-60 overflow-hidden relative">
                 <img
                   src="https://images.unsplash.com/photo-1548943487-a2e4f43b485d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
@@ -256,7 +296,7 @@ const App = () => {
             </div>
 
             {/* Menu 3 */}
-            <div className="bg-stone-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
               <div className="h-60 overflow-hidden relative">
                 <img
                   src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
@@ -458,7 +498,7 @@ const App = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={20} className="text-orange-500 flex-shrink-0" />
-                <span>0812-3456-7890 (WhatsApp Only)</span>
+                <span>0856-9431-8667 (WhatsApp Only)</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock size={20} className="text-orange-500 flex-shrink-0" />
@@ -476,6 +516,20 @@ const App = () => {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-green-600 hover:scale-110 transition-all duration-300 group flex items-center gap-0 hover:gap-3"
+        aria-label="Chat WhatsApp"
+      >
+        <MessageCircle size={28} />
+        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 font-bold text-sm">
+          Pesan Sekarang
+        </span>
+      </a>
 
     </div>
   );
