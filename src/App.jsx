@@ -16,11 +16,14 @@ import {
   MessageCircle,
   ClipboardList,
   ChefHat,
-  Truck
+  Truck,
+  Menu,
+  X
 } from 'lucide-react';
 
 const App = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleFaq = (index) => {
     if (openFaq === index) {
@@ -39,27 +42,60 @@ const App = () => {
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-2">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setIsMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
+            >
               <div className="bg-orange-500 text-white p-2 rounded-lg">
                 <Utensils size={24} />
               </div>
               <span className="font-bold text-2xl text-stone-800 tracking-tight">Dapur<span className="text-orange-500">Ibu</span></span>
-            </div>
+            </a>
             <div className="hidden md:flex space-x-8">
               <a href="#solusi" className="text-stone-600 hover:text-orange-500 font-medium transition-colors">Solusi</a>
               <a href="#menu" className="text-stone-600 hover:text-orange-500 font-medium transition-colors">Menu</a>
               <a href="#testimoni" className="text-stone-600 hover:text-orange-500 font-medium transition-colors">Testimoni</a>
               <a href="#faq" className="text-stone-600 hover:text-orange-500 font-medium transition-colors">FAQ</a>
             </div>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-md flex items-center gap-2"
-            >
-              <Phone size={18} />
-              <span className="hidden sm:inline">Pesan Sekarang</span>
-            </a>
+
+            <div className="flex items-center gap-3">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-md flex items-center gap-2 text-sm md:text-base"
+              >
+                <Phone size={16} className="md:w-[18px] md:h-[18px]" />
+                <span className="hidden sm:inline">Pesan Sekarang</span>
+              </a>
+
+              {/* Mobile Menu Toggle Button */}
+              <button
+                className="md:hidden text-stone-800 p-2 hover:bg-stone-100 rounded-lg transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <div
+          className={`md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-stone-100 transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? "max-h-64 py-4 opacity-100" : "max-h-0 py-0 opacity-0"
+            }`}
+        >
+          <div className="flex flex-col px-6 space-y-4">
+            <a href="#solusi" onClick={() => setIsMobileMenuOpen(false)} className="text-stone-600 hover:text-orange-500 font-bold text-lg">Solusi Kami</a>
+            <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="text-stone-600 hover:text-orange-500 font-bold text-lg">Daftar Menu</a>
+            <a href="#testimoni" onClick={() => setIsMobileMenuOpen(false)} className="text-stone-600 hover:text-orange-500 font-bold text-lg">Testimoni</a>
+            <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="text-stone-600 hover:text-orange-500 font-bold text-lg">FAQ</a>
           </div>
         </div>
       </nav>
@@ -494,7 +530,7 @@ const App = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="text-orange-500 flex-shrink-0 mt-0.5" />
-                <span>Jl. Masakan Nusantara No. 123, Jakarta Selatan, 12345</span>
+                <span>Jl. Mina Raya I Blok K4/4, Cibodas, Tangerang, Banten</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={20} className="text-orange-500 flex-shrink-0" />
