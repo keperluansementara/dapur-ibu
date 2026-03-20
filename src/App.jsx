@@ -18,7 +18,11 @@ import {
   ChefHat,
   Truck,
   Menu,
-  X
+  X,
+  Flame,
+  ShieldCheck,
+  CheckCheck,
+  Timer
 } from 'lucide-react';
 
 const App = () => {
@@ -112,23 +116,43 @@ const App = () => {
             <div className="inline-block bg-orange-100 text-orange-700 font-semibold px-4 py-1.5 rounded-full mb-6 text-sm border border-orange-200">
               🌿 Katering Sehat & Higienis
             </div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-stone-900 mb-6">
-              Masakan Rumahan Enak, <span className="text-orange-500">Praktis Tanpa Ribet</span>
+              Solusi Makan Harian Tanpa Ribet. <span className="text-orange-500">Enak, Sehat, & Selalu Tepat Waktu.</span>
             </h1>
-            <p className="text-lg md:text-xl text-stone-600 mb-8 max-w-2xl mx-auto md:mx-0">
-              Cocok untuk harian, kantor, dan acara keluarga. Nikmati sajian lezat bergizi setiap hari tanpa perlu repot memasak.
+            <p className="text-lg md:text-xl text-stone-600 mb-6 max-w-2xl mx-auto md:mx-0">
+              Menu rumahan fresh setiap hari. Gratis ongkir area Tangerang & sekitarnya.
             </p>
+
+            {/* Scarcity Banner */}
+            <div className="inline-flex items-center justify-center md:justify-start gap-2 bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded-lg font-bold mb-8 text-sm md:text-base animate-pulse shadow-sm">
+              <Flame size={20} className="text-red-500" />
+              Sisa 5 slot untuk minggu ini!
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <a
+                href="#menu"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+              >
+                Lihat Menu & Harga
+                <ArrowRight size={20} />
+              </a>
               <a
                 href={whatsappLink}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                className="bg-white border-2 border-green-500 text-green-600 hover:bg-green-50 px-8 py-4 rounded-full font-bold text-lg shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2"
               >
-                Pesan Sekarang via WhatsApp
-                <ArrowRight size={20} />
+                <MessageCircle size={20} />
+                Tanya via WhatsApp
               </a>
             </div>
+
             <div className="mt-8 flex items-center justify-center md:justify-start gap-4 text-sm text-stone-500 font-medium">
               <div className="flex items-center gap-1"><CheckCircle2 size={16} className="text-green-500" /> Halal 100%</div>
               <div className="flex items-center gap-1"><CheckCircle2 size={16} className="text-green-500" /> Gratis Ongkir*</div>
@@ -137,7 +161,7 @@ const App = () => {
           <div className="flex-1 relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-orange-200 to-amber-50 rounded-full transform rotate-6 scale-105 -z-10"></div>
             <img
-              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Masakan Rumahan Lezat"
               className="rounded-3xl shadow-2xl border-4 border-white object-cover h-[400px] md:h-[500px] w-full"
             />
@@ -150,6 +174,39 @@ const App = () => {
                 <p className="text-xs text-stone-500 font-bold uppercase tracking-wider">Rating Pelanggan</p>
                 <p className="text-xl font-extrabold text-stone-800">4.9/5.0</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section (NEW) */}
+      <section className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-12 mb-12">
+        <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-stone-100 grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-stone-100">
+          <div className="flex items-center gap-4 md:justify-center pt-4 md:pt-0 first:pt-0">
+            <div className="bg-green-100 text-green-600 p-3 rounded-full flex-shrink-0">
+              <ShieldCheck size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-stone-800">100% Halal</h4>
+              <p className="text-sm text-stone-500">Bahan & proses terjamin</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 md:justify-center pt-4 md:pt-0">
+            <div className="bg-orange-100 text-orange-600 p-3 rounded-full flex-shrink-0">
+              <ChefHat size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-stone-800">Masak Fresh Setiap Hari</h4>
+              <p className="text-sm text-stone-500">Tanpa bahan pengawet</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 md:justify-center pt-4 md:pt-0">
+            <div className="bg-amber-100 text-amber-600 p-3 rounded-full flex-shrink-0">
+              <Timer size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-stone-800">Garansi Tepat Waktu</h4>
+              <p className="text-sm text-stone-500">Tiba sebelum jam makan</p>
             </div>
           </div>
         </div>
@@ -256,21 +313,21 @@ const App = () => {
               <div className="w-16 h-16 mx-auto bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm relative z-10">
                 <ClipboardList size={28} />
               </div>
-              <h4 className="text-xl font-bold mb-2 text-stone-800">1. Pilih Menu & Paket</h4>
-              <p className="text-stone-600 text-sm">Hubungi via WA, pilih paket harian/mingguan dan sampaikan preferensi menu Anda.</p>
+              <h4 className="text-xl font-bold mb-2 text-stone-800">1. Pilih Paket</h4>
+              <p className="text-stone-600 text-sm">Lihat daftar menu kami, lalu pilih paket harian, mingguan, atau acara keluarga.</p>
             </div>
             <div className="text-center bg-white p-6 rounded-2xl shadow-sm border border-stone-100 relative">
-              <div className="w-16 h-16 mx-auto bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm relative z-10">
-                <ChefHat size={28} />
+              <div className="w-16 h-16 mx-auto bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm relative z-10">
+                <MessageCircle size={28} />
               </div>
-              <h4 className="text-xl font-bold mb-2 text-stone-800">2. Kami Masak Fresh</h4>
-              <p className="text-stone-600 text-sm">Pesanan disiapkan pagi hari dengan bahan baku segar tanpa bahan pengawet.</p>
+              <h4 className="text-xl font-bold mb-2 text-stone-800">2. Chat WhatsApp</h4>
+              <p className="text-stone-600 text-sm">Klik tombol WhatsApp, admin kami akan merespon cepat untuk mendata pesanan Anda.</p>
             </div>
             <div className="text-center bg-white p-6 rounded-2xl shadow-sm border border-stone-100 relative">
               <div className="w-16 h-16 mx-auto bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm relative z-10">
                 <Truck size={28} />
               </div>
-              <h4 className="text-xl font-bold mb-2 text-stone-800">3. Diantar ke Lokasi</h4>
+              <h4 className="text-xl font-bold mb-2 text-stone-800">3. Makanan Diantar</h4>
               <p className="text-stone-600 text-sm">Kurir kami akan memastikan makanan tiba hangat tepat waktu sebelum jam makan.</p>
             </div>
           </div>
@@ -365,55 +422,67 @@ const App = () => {
       </section>
 
       {/* Testimonials */}
-      <section id="testimoni" className="py-20 bg-stone-900 text-white relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+      <section id="testimoni" className="py-20 bg-stone-100 relative overflow-hidden">
+        {/* Subtle WA background pattern */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Apa Kata Mereka?</h2>
-            <p className="text-stone-400">Ratusan keluarga dan pekerja kantoran telah membuktikan kelezatannya.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-800">Testimoni Real via WhatsApp</h2>
+            <p className="text-stone-600">Ratusan keluarga dan pekerja kantoran telah membuktikan kelezatannya.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-stone-800 p-8 rounded-2xl border border-stone-700">
-              <div className="flex gap-1 text-orange-400 mb-4">
-                <Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} />
-              </div>
-              <p className="text-stone-300 mb-6 italic">"Sangat membantu buat saya yang ngekos dan kerja sampai malam. Makanannya enak banget berasa masakan ibu di rumah, porsinya juga ngenyangin!"</p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-800 font-bold text-xl">B</div>
+            {/* WA Chat Bubble 1 */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 bg-orange-200 rounded-full flex items-center justify-center text-orange-800 font-bold text-lg">B</div>
                 <div>
-                  <h5 className="font-bold">Budi Santoso</h5>
-                  <p className="text-xs text-stone-400">Karyawan Swasta</p>
+                  <h5 className="font-bold text-stone-800 text-sm">Budi (Karyawan)</h5>
+                  <p className="text-xs text-stone-500">Online</p>
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-2xl rounded-tl-none relative shadow-sm border border-stone-200 w-[90%]">
+                <p className="text-stone-700 text-sm leading-relaxed pb-3">Sangat membantu buat saya yang ngekos. Makanannya enak banget berasa masakan ibu di rumah, porsinya juga ngenyangin! 🙏</p>
+                <div className="absolute bottom-1 right-2 flex items-center gap-1">
+                  <span className="text-[10px] text-stone-400">11:30</span>
+                  <CheckCheck size={14} className="text-blue-500" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-stone-800 p-8 rounded-2xl border border-stone-700">
-              <div className="flex gap-1 text-orange-400 mb-4">
-                <Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} />
-              </div>
-              <p className="text-stone-300 mb-6 italic">"Pesan untuk acara arisan keluarga, semua pada suka sama ayam bakar dan sambalnya. Praktis banget, diantar on-time dan harganya oke banget buat kualitas sebagus ini!"</p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center text-green-800 font-bold text-xl">S</div>
+            {/* WA Chat Bubble 2 */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center text-green-800 font-bold text-lg">S</div>
                 <div>
-                  <h5 className="font-bold">Siti Aminah</h5>
-                  <p className="text-xs text-stone-400">Ibu Rumah Tangga</p>
+                  <h5 className="font-bold text-stone-800 text-sm">Siti (Ibu RT)</h5>
+                  <p className="text-xs text-stone-500">Online</p>
+                </div>
+              </div>
+              <div className="bg-[#DCF8C6] p-4 rounded-2xl rounded-tr-none relative shadow-sm border border-green-200 w-[90%] self-end">
+                <p className="text-stone-800 text-sm leading-relaxed pb-3">Semua pada suka sama ayam bakar dan sambalnya. Praktis banget, diantar on-time harganya oke banget buat kualitas sebagus ini! 😍</p>
+                <div className="absolute bottom-1 right-2 flex items-center gap-1">
+                  <span className="text-[10px] text-green-700">14:15</span>
+                  <CheckCheck size={14} className="text-blue-500" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-stone-800 p-8 rounded-2xl border border-stone-700">
-              <div className="flex gap-1 text-orange-400 mb-4">
-                <Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} /><Star className="fill-current" size={20} />
-              </div>
-              <p className="text-stone-300 mb-6 italic">"Udah langganan sebulan buat makan siang di kantor. Menunya variatif tiap hari jadi anak-anak kantor gak pada bosen. Higienis dan packingnya rapi."</p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center text-amber-800 font-bold text-xl">A</div>
+            {/* WA Chat Bubble 3 */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 bg-amber-200 rounded-full flex items-center justify-center text-amber-800 font-bold text-lg">A</div>
                 <div>
-                  <h5 className="font-bold">Andi Pratama</h5>
-                  <p className="text-xs text-stone-400">Manajer HRD</p>
+                  <h5 className="font-bold text-stone-800 text-sm">Andi (HRD)</h5>
+                  <p className="text-xs text-stone-500">Online</p>
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-2xl rounded-tl-none relative shadow-sm border border-stone-200 w-[90%]">
+                <p className="text-stone-700 text-sm leading-relaxed pb-3">Udah langganan sebulan buat makan siang kantor. Menunya variatif tiap hari, higienis & packingnya rapi. The best Dapur Ibu! 💯</p>
+                <div className="absolute bottom-1 right-2 flex items-center gap-1">
+                  <span className="text-[10px] text-stone-400">16:45</span>
+                  <CheckCheck size={14} className="text-blue-500" />
                 </div>
               </div>
             </div>
@@ -558,11 +627,11 @@ const App = () => {
         href={whatsappLink}
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-green-600 hover:scale-110 transition-all duration-300 group flex items-center gap-0 hover:gap-3"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-green-600 hover:scale-110 transition-all duration-300 group flex items-center gap-0 md:hover:gap-3"
         aria-label="Chat WhatsApp"
       >
-        <MessageCircle size={28} />
-        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 font-bold text-sm">
+        <MessageCircle size={32} className="animate-pulse" />
+        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 font-bold text-base hidden md:block">
           Pesan Sekarang
         </span>
       </a>
